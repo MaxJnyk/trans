@@ -51,7 +51,7 @@ export default function StroeniePage() {
           imageDir={direction.imageDir}
           sectionIndex="04"
         />
-        <Contacts />
+        <Contacts phone={direction.phone} />
       </main>
       <Footer />
     </>

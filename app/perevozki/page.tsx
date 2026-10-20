@@ -50,7 +50,7 @@ export default function PerevozkiPage() {
           imageDir={direction.imageDir}
           sectionIndex="04"
         />
-        <Contacts />
+        <Contacts phone={direction.phone} />
       </main>
       <Footer />
     </>

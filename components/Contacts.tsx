@@ -3,7 +3,14 @@ import { COMPANY, NAV_ITEMS } from "@/config/content";
 // Build-time constant — avoids dynamic `new Date()` during prerender
 const CURRENT_YEAR = 2026;
 
-export function Contacts() {
+type ContactsProps = {
+  phone?: string;
+  contactPerson?: string;
+};
+
+export function Contacts({ phone, contactPerson }: ContactsProps = {}) {
+  const displayPhone = phone || COMPANY.phone;
+
   return (
     <section id="contacts" className="bg-signal">
       <div className="mx-auto max-w-[1400px] px-5 py-20 md:px-10 md:py-28">
@@ -30,13 +37,12 @@ export function Contacts() {
 
             <p className="mt-8 max-w-md font-sans text-lg leading-relaxed text-concrete-900">
               Свяжитесь с нами для обсуждения работ, составления сметы
-              и согласования проекта благоустройства или прокладки
-              инженерных сетей.
+              и согласования проекта.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <a
-                href={`tel:${COMPANY.phone.replace(/[^+\d]/g, "")}`}
+                href={`tel:${displayPhone.replace(/[^+\d]/g, "")}`}
                 className="bg-concrete-950 px-8 py-4 font-display text-sm font-700 uppercase tracking-wide text-concrete-50 transition-colors hover:bg-concrete-800"
               >
                 Позвонить
@@ -52,10 +58,12 @@ export function Contacts() {
 
           {/* Right: contact details */}
           <div className="space-y-px bg-concrete-950/20">
-            <ContactRow label="Телефон" value={COMPANY.phone} />
+            <ContactRow label="Телефон" value={displayPhone} />
+            {contactPerson && (
+              <ContactRow label="Контактное лицо" value={contactPerson} />
+            )}
             <ContactRow label="Email" value={COMPANY.email} />
             <ContactRow label="Регион работ" value={COMPANY.region} />
-            <ContactRow label="Юридический адрес" value={COMPANY.legalAddress} />
           </div>
         </div>
       </div>
@@ -85,14 +93,9 @@ export function Footer() {
           <div className="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-concrete-500">
             Реквизиты
           </div>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 md:grid-cols-3">
             <Requisite label="Полное наименование" value={COMPANY.fullName} />
             <Requisite label="ИНН" value={COMPANY.inn} />
-            <Requisite label="КПП" value={COMPANY.kpp} />
-            <Requisite label="Банк" value={COMPANY.bank} />
-            <Requisite label="р/с" value={COMPANY.account} />
-            <Requisite label="к/с" value={COMPANY.correspondentAccount} />
-            <Requisite label="Почтовый адрес" value={COMPANY.postalAddress} />
             <Requisite label="Юридический адрес" value={COMPANY.legalAddress} />
           </div>
         </div>

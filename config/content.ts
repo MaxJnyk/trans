@@ -9,7 +9,7 @@ export const COMPANY = {
   account: "40702810203500012239",
   bank: 'Точка ПАО Банка «ФК Открытие»',
   correspondentAccount: "30101810845250000999",
-  phone: "+7 (812) 200-00-00",
+  phone: "+7 (951) 685-47-56",
   email: "info@trans-stroy-spb.ru",
   region: "Санкт-Петербург и Ленинградская область",
   foundedYear: 2009,
@@ -25,6 +25,8 @@ export type Direction = {
   tagline: string;
   description: string;
   geo: string;
+  phone: string;
+  contactPerson?: string;
   imageDir: string; // folder under /public/
   heroImage: string;
 };
@@ -39,6 +41,7 @@ export const DIRECTIONS: Direction[] = [
     description:
       "Комплексные работы по благоустройству территорий, прокладке наружных инженерных сетей методом ГНБ и земляным работам. Полный цикл — от проекта до сдачи в эксплуатацию.",
     geo: "СПб и ЛО",
+    phone: "+7 (951) 685-47-56",
     imageDir: "/1",
     heroImage: "photo_59_2026-10-20_13-55-54.jpg",
   },
@@ -51,6 +54,7 @@ export const DIRECTIONS: Direction[] = [
     description:
       "Перевозка негабаритных и тяжеловесных грузов. Подбор транспорта, согласование маршрутов, сопровождение. Работаем по Северо-Западу и России.",
     geo: "По всей РФ",
+    phone: "+7 (921) 358-15-17",
     imageDir: "/2",
     heroImage: "photo_16_2026-10-20_14-19-13.jpg",
   },
