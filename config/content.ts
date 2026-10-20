@@ -11,7 +11,7 @@ export const COMPANY = {
   correspondentAccount: "30101810845250000999",
   phone: "+7 (951) 685-47-56",
   email: "info@trans-stroy-spb.ru",
-  region: "Санкт-Петербург и Ленинградская область",
+  region: "Вся Россия",
   foundedYear: 2009,
 } as const;
 
