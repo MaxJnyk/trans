@@ -1,4 +1,4 @@
-import { COMPANY, NAV_ITEMS } from "@/config/content";
+import { COMPANY, DIRECTIONS, NAV_ITEMS } from "@/config/content";
 
 // Build-time constant — avoids dynamic `new Date()` during prerender
 const CURRENT_YEAR = 2026;
@@ -42,7 +42,7 @@ export function Contacts({ phone, contactPerson }: ContactsProps = {}) {
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <a
-                href={`tel:${displayPhone.replace(/[^+\d]/g, "")}`}
+                href={`tel:${(phone || DIRECTIONS[0].phone).replace(/[^+\d]/g, "")}`}
                 className="bg-concrete-950 px-8 py-4 font-display text-sm font-700 uppercase tracking-wide text-concrete-50 transition-colors hover:bg-concrete-800"
               >
                 Позвонить
@@ -58,9 +58,18 @@ export function Contacts({ phone, contactPerson }: ContactsProps = {}) {
 
           {/* Right: contact details */}
           <div className="space-y-px bg-concrete-950/20">
-            <ContactRow label="Телефон" value={displayPhone} />
-            {contactPerson && (
-              <ContactRow label="Контактное лицо" value={contactPerson} />
+            {phone ? (
+              <ContactRow label="Телефон" value={displayPhone} />
+            ) : (
+              <>
+                {DIRECTIONS.map((dir) => (
+                  <ContactRow
+                    key={dir.slug}
+                    label={`Телефон · ${dir.short}`}
+                    value={dir.phone}
+                  />
+                ))}
+              </>
             )}
             <ContactRow label="Email" value={COMPANY.email} />
             <ContactRow label="Регион работ" value={COMPANY.region} />
