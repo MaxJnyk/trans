@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { DirectionHero } from "@/components/DirectionHero";
 import { Ticker } from "@/components/Ticker";
@@ -14,6 +15,19 @@ import {
   PEREVOZKI_GALLERY,
   PEREVOZKI_TICKER,
 } from "@/config/content";
+
+export const metadata: Metadata = {
+  title: "Перевозки негабаритных грузов по России — тралы до 100 тонн",
+  description:
+    "Перевозка негабаритных и тяжеловесных грузов по всей России. Тралы до 100 тонн, согласование маршрутов, машины прикрытия, сопровождение. ООО «Транс Строй СПб».",
+  openGraph: {
+    title: "Перевозки негабаритных грузов — Транс Строй СПб",
+    description:
+      "Негабаритные грузы · Тралы до 100 тонн · Спецтехника · По всей РФ",
+    url: "/perevozki",
+  },
+  alternates: { canonical: "/perevozki" },
+};
 
 export default function PerevozkiPage() {
   const direction = getDirection("perevozki")!;

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { DirectionHero } from "@/components/DirectionHero";
 import { Ticker } from "@/components/Ticker";
@@ -14,6 +15,20 @@ import {
   STROENIE_GALLERY,
   STROENIE_TICKER,
 } from "@/config/content";
+
+export const metadata: Metadata = {
+  title:
+    "Строительство — благоустройство, инженерные сети, земляные работы в СПб",
+  description:
+    "Комплексные строительные работы: благоустройство территорий, наружные инженерные сети (ГНБ), земляные работы в Санкт-Петербурге и Ленинградской области. Фотографии выполненных объектов.",
+  openGraph: {
+    title: "Строительство — Транс Строй СПб",
+    description:
+      "Благоустройство территорий · Инженерные сети · ГНБ · Земляные работы · СПб и ЛО",
+    url: "/stroenie",
+  },
+  alternates: { canonical: "/stroenie" },
+};
 
 export default function StroeniePage() {
   const direction = getDirection("stroenie")!;
